@@ -7,11 +7,12 @@ items:
     labels:
       app.kubernetes.io/name: hello-java-spring-boot
     name: hello-java-spring-boot
+    namespace: project-test
   spec:
     output:
       to:
         kind: DockerImage
-        name: default-route-openshift-image-registry.apps-crc.testing/project-test/jupiter-image:latest
+        name: default-route-openshift-image-registry.apps-crc.testing/project-test/hello-java:latest
     source:
       # Expect a local directory to be streamed to OpenShift as a build source
       type: Binary
