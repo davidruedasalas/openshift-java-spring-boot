@@ -7,7 +7,6 @@ items:
     labels:
       app.kubernetes.io/name: hello-java-spring-boot
     name: hello-java-spring-boot
-    namespace: project-test
   spec:
     output:
       to:
