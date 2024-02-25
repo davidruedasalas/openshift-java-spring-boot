@@ -11,7 +11,7 @@ items:
     output:
       to:
         kind: DockerImage
-        name: default-route-openshift-image-registry.apps-crc.testing/project-test/hello-java:latest
+        name: default-route-openshift-image-registry.apps-crc.testing/project-test/jupiter-image:latest
     source:
       # Expect a local directory to be streamed to OpenShift as a build source
       type: Binary
