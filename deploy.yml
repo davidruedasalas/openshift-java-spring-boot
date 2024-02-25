@@ -9,6 +9,7 @@ items:
       app.kubernetes.io/component: hello-java-spring-boot
       app.kubernetes.io/instance: hello-java-spring-boot
     name: hello-java-spring-boot
+    namespace: project-test
   spec:
     ports:
     - name: 8080-tcp
@@ -27,6 +28,7 @@ items:
       app.kubernetes.io/component: hello-java-spring-boot
       app.kubernetes.io/instance: hello-java-spring-boot
     name: hello-java-spring-boot
+    namespace: project-test
   spec:
     replicas: 1
     selector:
@@ -39,14 +41,14 @@ items:
         name: hello-java-spring-boot
       spec:
         containers:
-        - image: monodot/hello-java-spring-boot:latest
+        - image: default-route-openshift-image-registry.apps-crc.testing/project-test/hello-java:latest
           imagePullPolicy: IfNotPresent
           name: hello-java-spring-boot
           env:
-            - name: FAVOURITE_CHEESE
-              valueFrom:
-                configMapKeyRef: my-configmap
-                key: thefavourite.cheese
+          - name: FAVOURITE_CHEESE
+            valueFrom:
+              configMapKeyRef: my-configmap
+              key: thefavourite.cheese
           ports:
           - containerPort: 8080
             protocol: TCP
