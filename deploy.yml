@@ -9,7 +9,7 @@ items:
       app.kubernetes.io/component: hello-java-spring-boot
       app.kubernetes.io/instance: hello-java-spring-boot
     name: hello-java-spring-boot
-    namespace: project-test
+    namespace: default
   spec:
     ports:
     - name: 8080-tcp
@@ -28,7 +28,7 @@ items:
       app.kubernetes.io/component: hello-java-spring-boot
       app.kubernetes.io/instance: hello-java-spring-boot
     name: hello-java-spring-boot
-    namespace: project-test
+    namespace: default
   spec:
     replicas: 1
     selector:

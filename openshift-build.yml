@@ -1,24 +1,27 @@
-apiVersion: v1
-kind: List
-items:
-- apiVersion: build.openshift.io/v1
-  kind: BuildConfig
-  metadata:
-    labels:
-      app.kubernetes.io/name: hello-java-spring-boot
-    name: hello-java-spring-boot
-    namespace: project-test
-  spec:
-    output:
-      to:
-        kind: DockerImage
-        name: hello-java:latest
-    source:
-      # Expect a local directory to be streamed to OpenShift as a build source
-      type: Binary
-      binary: {}
-    strategy:
-      type: Docker
-      dockerStrategy:
-        # Find the image build instructions in ./Dockerfile
-        dockerfilePath: Dockerfile
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: docker-build
+  namespace: default
+  labels:
+    name: docker-build
+spec:
+  triggers:
+  # - type: GitHub
+  #   github:
+  #     secret: secret-token
+  - type: ImageChange
+    imageChange: {}
+  - type: ConfigChange
+  source:
+    type: Git
+    git:
+      uri: https://github.com/davidruedasalas/openshift-java-spring-boot.git
+      ref: main # or specify branch, tag, or commit hash
+      contextDir: Dockerfile # Path to the directory containing the Dockerfile
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: hello-java:latest
