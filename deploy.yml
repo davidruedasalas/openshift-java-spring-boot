@@ -39,7 +39,7 @@ items:
         name: hello-java-spring-boot
       spec:
         containers:
-        - image: default-route-openshift-image-registry.apps-crc.testing/project-test/hello-java:latest
+        - image: default-route-openshift-image-registry.apps-crc.testing/project-test/jupiter-image:latest
           imagePullPolicy: IfNotPresent
           name: hello-java-spring-boot
           env:
